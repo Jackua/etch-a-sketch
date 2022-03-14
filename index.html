@@ -23,7 +23,7 @@
         <link rel="apple-touch-icon" href="">
 
         <link rel="stylesheet" href="style.css">
-        <script defer src="javascript.js"></script>
+        <script defer src="script.js"></script>
     </head>
 
     <body>
@@ -31,15 +31,26 @@
             <h1>Etch-A-Sketch</h1>
         </header>
 
-        <div class="sidenav">
-            <div class="slidecontainer"><input type="range" min="1" max="100" value="8" class="slider width">Width:</div>
-            <div class="slidecontainer"><input type="range" min="1" max="100" value="8" class="slider Height">Height:</div>
-            <div class="colorcontainer"><input type="color" value="#000000" class="colorselector"> Color:</div>
-            <div class="clearcontainer"><button class="clearbutton">Clear</button></div>
-        </div>
-        
         <main>
-            
+            <div class="sidenav">
+                <div class="widthcontainer">
+                    Cell Width: <input type="number" min="2" max="40" value="10" id="width" >
+                </div>
+
+                <div class="heightcontainer">
+                    Cell Height: <input type="number" min="2" max="40" value="10" id="height" >
+                </div>
+
+                <div class="colorcontainer">
+                    <input type="color" value="#000000" id="color">
+                </div>
+
+                <div class="submitcontainer"><button class="submit">Submit</button></div>
+
+                <div class="clearcontainer"><button class="clear">Clear</button></div>
+            </div>
+        
+            <div id="etcharea"></div>
         </main>
             
         <footer>
