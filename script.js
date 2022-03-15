@@ -42,9 +42,8 @@ function cellMouseUp(e) {
 
 const cellFunctions = [
     ["mousedown",cellMouseDown],
-    ["mousemove",colorChange],
-    ["mouseup",cellMouseUp]
-]
+    ["mousemove",colorChange]
+];
 
 
 function assignCellFunctions(){
@@ -56,4 +55,6 @@ function assignCellFunctions(){
     });
 };
 
-assignCellFunctions()
+document.onmouseup = cellMouseUp;
+
+assignCellFunctions();
