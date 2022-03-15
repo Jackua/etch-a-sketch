@@ -1,7 +1,5 @@
 const etcharea = document.querySelector("#etcharea");
 
-const clearbutton = document.querySelector(".clear");
-
 const div = "<div class=\"cell\"></div>";
 const width = document.querySelector("#width");
 const height = document.querySelector("#height");
@@ -21,17 +19,41 @@ submitbutton.addEventListener("mousedown", changeGrid);
 function changeGrid(e) {
     const grid = createGrid();
     etcharea.innerHTML = grid;
+    assignCellFunctions();
 };
-
-
-etcharea.addEventListener("mousedown", colorChange);
 
 const color = document.querySelector("#color");
+let cellDrag = false;
 
 function colorChange(e) {
-    if (e.target.classList.value === "cell") {
-        console.log(e.target.classList.value)
-        console.log(color.value)
+    if (e.target.classList.value === "cell" && cellDrag === true) {
         e.target.style.backgroundColor = color.value
-    }
+    };
 };
+
+function cellMouseDown(e) {
+    cellDrag = true;
+    colorChange(e)
+};
+
+function cellMouseUp(e) {
+    cellDrag = false;
+};
+
+const cellFunctions = [
+    ["mousedown",cellMouseDown],
+    ["mousemove",colorChange],
+    ["mouseup",cellMouseUp]
+]
+
+
+function assignCellFunctions(){
+    const allCell =document.querySelectorAll(".cell")
+    allCell.forEach(cell => {
+        cellFunctions.forEach(cellfunction =>{
+            cell.addEventListener(cellfunction[0], cellfunction[1]);
+        });
+    });
+};
+
+assignCellFunctions()
